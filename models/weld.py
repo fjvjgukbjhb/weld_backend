@@ -36,11 +36,7 @@ class WeldGene(BaseModel):
         result = await async_db.execute(WeldGene.select(id).where(WeldGene.id == id))
 
 
-                # WeldGene.select (WeldGene,
-                #                  fn.group_concat(WeldGene.id)
-                #                  .python_value(convert_num_arr).alias('id')
-                #                 fn.group_concat(WeldGene.id)
-                #                 .python_value(convert_num_arr).alias('id')
+
                 #                 )
         return result
 
