@@ -57,7 +57,7 @@ ServerError: Resp = Resp(
     5000, "服务器繁忙", http_status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-def ok(*, data: Union[list, dict, str] = None, total: int = None, msg: str = "success", success=True) -> Response:
+def ok(*, data: Union[list, dict, str] = None, total: int = None,name : str = None,msg: str = "success", success=True) -> Response:
     # print('ok1')
 
     # data = explain(data)
@@ -72,7 +72,8 @@ def ok(*, data: Union[list, dict, str] = None, total: int = None, msg: str = "su
             "success": success,
             'msg': msg,
             'data': data,
-            'total': total
+            'total': total,
+            'name': name
         })
     )
 

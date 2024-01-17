@@ -8,7 +8,7 @@ from pydantic import BaseModel, EmailStr, AnyHttpUrl, Field, constr, validator
 
 from utils.tools_func import tz
 
-class BurnThrough(BaseModel):
+class WeldGene(BaseModel):
     id: Optional[int]
     weldBeadCode: Optional[str]
     weldMethod: Optional[str]
@@ -19,5 +19,7 @@ class BurnThrough(BaseModel):
     weldTechnologyData: Optional[str]
     weldProcessData: Optional[str]
     testReportData: Optional[str]
+
+
 
   

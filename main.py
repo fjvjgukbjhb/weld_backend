@@ -5,8 +5,12 @@ from common import session
 from core.server import create_app
 from fastapi.openapi.docs import get_swagger_ui_html
 import time
-from fastapi import Depends, applications
+from fastapi import Depends, applications, FastAPI
 
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+import os
+import requests
 '''
 Author: 嘉欣 罗 2592734121@qq.com
 Date: 2022-12-22 12:49:07
@@ -89,6 +93,13 @@ def getApiMap():
     return apiMap
 
 
+#
+# 设置文件夹路径（请将路径更改为实际的文件夹路径）
+WELD_PATH = 'F:/weldProject/weld'
+local_folder_path = Path(WELD_PATH)
+# 将本地文件夹映射为 HTTP 地址
+app.mount("/static1", StaticFiles(directory=str(local_folder_path)), name="static1")
+
 if __name__ == "__main__":
     import uvicorn
 
@@ -96,11 +107,11 @@ if __name__ == "__main__":
     for route in app.routes:
         if hasattr(route, "methods"):
             print({'path': route.path, 'name': route.name, 'methods': route.methods})
-    #
+
     asyncio.run(
         uvicorn.run(
             app='main:app',
-            # host="172.16.82.199",
+            # host="127.0.0.1",
             host="172.16.80.225",
 # <<<<<<< Updated upstream
 #             host='172.16.50.86',
